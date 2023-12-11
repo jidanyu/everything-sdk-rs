@@ -6,7 +6,7 @@
 
 Use [Everything SDK](https://www.voidtools.com/support/everything/sdk/) in __Rust way__. Types and Lifetime prevent you from accidentally calling the IPC query functions by mistake.
 
-_No document proofing yet, but you should be able to try it out._
+_No document proofing yet, but you could be able to try it out._
 
 ## Usage
 
