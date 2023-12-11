@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "everything.h": "c"
+    },
+    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
+}

@@ -1,0 +1,31 @@
+[package]
+name = "everything-sdk-sys"
+version = "0.0.2+2"
+edition = "2021"
+description = "Native Rust bindings to the voidtools Everything-SDK"
+authors = ["owtotwo <owtotwo@163.com>"]
+license = "GPL-3.0-or-later"
+include = ["src/**/*", "Everything-SDK/**/*", "build.rs", "Cargo.toml"]
+keywords = ["everything", "sdk", "windows", "ffi", "bindings"]
+categories = ["api-bindings", "external-ffi-bindings"]
+links = "everything-sdk"
+repository = "https://github.com/owtotwo/everything-sdk-rs"
+homepage = "https://github.com/owtotwo/everything-sdk-rs"
+documentation = "https://docs.rs/everything-sdk-sys"
+
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.52", features = ["Win32_Foundation"] }
+
+[build-dependencies]
+cc = "1.0.83"
+
+
+[features]
+default = ["vendored"]
+vendored = []
+dll = []
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = ["x86_64-pc-windows-msvc"]
