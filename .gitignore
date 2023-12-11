@@ -1,5 +1,5 @@
 /target
 /Cargo.lock
-/.vscode
+/.vscode/**/*
 TODO.md
 NOTE.md
