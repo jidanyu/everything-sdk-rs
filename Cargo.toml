@@ -58,3 +58,7 @@ name = "readme_raw"
 path = "examples/readme_raw.rs"
 required-features = ["raw"]
 
+# https://blog.rust-lang.org/2020/03/15/docs-rs-opt-into-fewer-targets.html
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = ["x86_64-pc-windows-msvc", "i686-pc-windows-msvc"]
