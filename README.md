@@ -12,7 +12,7 @@ _No document proofing yet, but you could be able to try it out._
 
 ```toml
 [dependencies]
-everything-sdk = "0.0.2"
+everything-sdk = "0.0.3"
 ```
 
 _The Sample all you should know: [readme.rs](examples/readme.rs) ._
@@ -130,7 +130,7 @@ fn main() {
 
 ```toml
 [dependencies]
-everything-sdk = { version = "0.0.2", features = ["async"] }
+everything-sdk = { version = "0.0.3", features = ["async"] }
 ```
 
 There are __only two differences__ in async code compared to synchronous code.
@@ -146,7 +146,7 @@ _The complete Sample in __async__ mode with the same logic: [readme_async.rs](ex
 
 ```toml
 [dependencies]
-everything-sdk = { version = "0.0.2", features = ["raw"] }
+everything-sdk = { version = "0.0.3", features = ["raw"] }
 ```
 
 ```rust
