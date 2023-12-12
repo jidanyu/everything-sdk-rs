@@ -1,6 +1,6 @@
 [package]
 name = "everything-sdk"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 description = "An ergonomic Everything(voidtools) SDK wrapper in Rust. (Supports async and raw sdk functions)"
 readme = "README.md"
@@ -22,7 +22,7 @@ bitflags = "2.4.1"
 futures = { version = "0.3", optional = true }
 
 [target.'cfg(windows)'.dependencies]
-everything-sdk-sys = { path = "everything-sdk-sys", version = "0.0.2" }
+everything-sdk-sys = { path = "everything-sdk-sys", version = "0.0.3" }
 widestring = "1.0.2"
 windows = { version = "0.52", features = [
     "Win32_Foundation",

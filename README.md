@@ -47,10 +47,10 @@ fn main() {
             searcher
                 .set_request_flags(
                     RequestFlags::EVERYTHING_REQUEST_FILE_NAME
-                | RequestFlags::EVERYTHING_REQUEST_PATH
-                | RequestFlags::EVERYTHING_REQUEST_SIZE
-                // | RequestFlags::EVERYTHING_REQUEST_ATTRIBUTES // no attributes-data request
-                | RequestFlags::EVERYTHING_REQUEST_RUN_COUNT,
+                        | RequestFlags::EVERYTHING_REQUEST_PATH
+                        | RequestFlags::EVERYTHING_REQUEST_SIZE
+                        // | RequestFlags::EVERYTHING_REQUEST_ATTRIBUTES // no attr-data request
+                        | RequestFlags::EVERYTHING_REQUEST_RUN_COUNT,
                 )
                 .set_max(5)
                 .set_sort(SortType::EVERYTHING_SORT_DATE_RECENTLY_CHANGED_ASCENDING);
@@ -78,10 +78,11 @@ fn main() {
 
             // Walking the 5 query results from Everything IPC by iterator.
             for item in results.iter() {
+                let full_path = item.path().unwrap().join(item.filename().unwrap());
                 println!(
                     "Item[{}]: {} ({} bytes)",
                     item.index(),
-                    item.path().join(item.filename()).display(),
+                    full_path.display(),
                     // We have set the `RequestFlags::EVERYTHING_REQUEST_SIZE` for it before.
                     item.size().unwrap(),
                 );

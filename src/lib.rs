@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![cfg(windows)]
 
 #[cfg(all(feature = "ergo", feature = "raw"))]
 compile_error!("ergo support and raw support are exclusive. only one of them can be enabled at the same time.");

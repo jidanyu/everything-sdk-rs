@@ -1,6 +1,6 @@
 [package]
 name = "everything-sdk-sys"
-version = "0.0.2+2"
+version = "0.0.3+2"
 edition = "2021"
 description = "Native Rust bindings to the voidtools Everything-SDK"
 authors = ["owtotwo <owtotwo@163.com>"]

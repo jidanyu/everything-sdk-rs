@@ -55,7 +55,10 @@ async fn main() {
                 println!(
                     "Item[{}]: {} ({} bytes)",
                     item.index(),
-                    item.path().join(item.filename()).display(),
+                    item.path()
+                        .unwrap()
+                        .join(item.filename().unwrap())
+                        .display(),
                     item.size().unwrap(),
                 );
             }

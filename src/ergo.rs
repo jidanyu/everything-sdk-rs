@@ -763,20 +763,22 @@ impl<'a> EverythingItem<'a> {
         raw::Everything_IsFileResult(self.index)
     }
 
-    pub fn filename(&self) -> OsString {
-        raw::Everything_GetResultFileName(self.index).unwrap()
+    pub fn filename(&self) -> Result<OsString> {
+        self.need_flags_set(RequestFlags::EVERYTHING_REQUEST_FILE_NAME)?;
+        Ok(raw::Everything_GetResultFileName(self.index).unwrap())
     }
 
-    pub fn path(&self) -> PathBuf {
-        raw::Everything_GetResultPath(self.index).unwrap().into()
+    pub fn path(&self) -> Result<PathBuf> {
+        self.need_flags_set(RequestFlags::EVERYTHING_REQUEST_PATH)?;
+        Ok(raw::Everything_GetResultPath(self.index).unwrap().into())
     }
 
     /// Get the full path name, like x.path().join(x.filename()).
     ///
-    /// Buf if the pathname is too long, you can choose to cut off the tail.
-    pub fn full_path_name(&self, max_len: Option<u32>) -> PathBuf {
-        // This is a special case, do not need this flag.
-        // self.need_flags_set(RequestFlags::EVERYTHING_REQUEST_FULL_PATH_AND_FILE_NAME)?;
+    /// Buf if the pathname is too long, you can choose to cut off the tail, reduce the
+    /// memory consumption, or limit the max size of buffer memory allocation.
+    pub fn full_path_name(&self, max_len: Option<u32>) -> Result<PathBuf> {
+        self.need_flags_set(RequestFlags::EVERYTHING_REQUEST_FULL_PATH_AND_FILE_NAME)?;
         let size_hint =
             u32::from(raw::Everything_GetResultFullPathNameSizeHint(self.index).unwrap());
         let buf_len = std::cmp::min(size_hint, max_len.unwrap_or(u32::MAX)) as usize;
@@ -784,7 +786,7 @@ impl<'a> EverythingItem<'a> {
         let n_wchar =
             u32::from(raw::Everything_GetResultFullPathName(self.index, &mut buf).unwrap());
         assert_eq!(size_hint, n_wchar + 1);
-        U16CStr::from_slice(&buf).unwrap().to_os_string().into()
+        Ok(U16CStr::from_slice(&buf).unwrap().to_os_string().into())
     }
 
     // Check if the corresponding flags are set. (usually just check a single flag)
