@@ -9,7 +9,7 @@ use everything_sdk::raw::*;
 //   to them. Finally it will cause _everything_ to become messy, uncontrollable and unreliable.
 //
 // All we can do is to line them up, in some certain order, and let them move forward one by one
-// to prevent confusion.
+// to prevent chaos.
 //
 // Ref: <https://stackoverflow.com/questions/27791532/how-do-i-create-a-global-mutable-singleton>
 

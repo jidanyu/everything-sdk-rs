@@ -3,6 +3,7 @@
 [<img alt="Everything Version" src="https://img.shields.io/badge/Everything-1.4.1-FF8000?style=for-the-badge" height="20">](https://www.voidtools.com/)
 [<img alt="crates.io" src="https://img.shields.io/crates/v/everything-sdk.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/everything-sdk)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-everything_sdk-66c2a5?style=for-the-badge&logo=docs.rs" height="20">](https://docs.rs/everything-sdk)
+[<img alt="MSRV" src="https://img.shields.io/badge/MSRV-1.70-ffc832?style=for-the-badge" height="20">](https://blog.rust-lang.org/2023/06/01/Rust-1.70.0.html)
 
 Use [Everything SDK](https://www.voidtools.com/support/everything/sdk/) in __Rust way__. Types and Lifetime prevent you from accidentally calling the IPC query functions by mistake.
 
@@ -178,7 +179,7 @@ _The complete Sample in __raw__ mode with the same logic: [readme_raw.rs](exampl
 > to them. Finally it will cause _everything_ to become messy, uncontrollable and unreliable.
 >
 > All we can do is to _**line them up**_, in some certain order, and let them _**move forward**_ one by one
-> to prevent confusion.
+> to prevent chaos.
 
 ## License
 
