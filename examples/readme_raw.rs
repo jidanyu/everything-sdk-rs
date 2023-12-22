@@ -50,7 +50,7 @@ fn main() {
                 println!(
                     "Item[{}]: {} ({} bytes)",
                     index,
-                    path.join(filename).display(),
+                    path.join(filename).display(), // careful for the "C:abc.txt" without '\'
                     file_size,
                 );
             }

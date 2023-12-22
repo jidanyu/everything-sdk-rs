@@ -35,7 +35,7 @@ async fn main() {
             assert_eq!(searcher.get_match_case(), false);
 
             // Send IPC query in Async, await for the result. So we are _unblocking_ now.
-            // Some hevy query (like search single 'a') may take a lot of time in IPC data transfer.
+            // Some heavy query (like search single 'a') may take a lot of time in IPC data transfer.
             // So during this time, tokio goes to deal with other tasks.
             // When the IPC done, it will yield back for us.
             let results = searcher.query().await;
@@ -55,10 +55,7 @@ async fn main() {
                 println!(
                     "Item[{}]: {} ({} bytes)",
                     item.index(),
-                    item.path()
-                        .unwrap()
-                        .join(item.filename().unwrap())
-                        .display(),
+                    item.filepath().unwrap().display(),
                     item.size().unwrap(),
                 );
             }

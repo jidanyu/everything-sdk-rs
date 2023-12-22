@@ -39,7 +39,7 @@ fn main() {
             assert_eq!(searcher.get_match_case(), false);
 
             // Send IPC query now, _block_ and wait for the result to return.
-            // Some hevy query (like search single 'a') may take a lot of time in IPC data transfer, so
+            // Some heavy query (like search single 'a') may take a lot of time in IPC data transfer, so
             // if you need unblocking, do them in a new thread or enable the `async` feature in crate.
             let results = searcher.query();
 
@@ -58,7 +58,7 @@ fn main() {
 
             // Walking the 5 query results from Everything IPC by iterator.
             for item in results.iter() {
-                let full_path = item.path().unwrap().join(item.filename().unwrap());
+                let full_path = item.filepath().unwrap();
                 println!(
                     "Item[{}]: {} ({} bytes)",
                     item.index(),

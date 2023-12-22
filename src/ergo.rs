@@ -773,7 +773,28 @@ impl<'a> EverythingItem<'a> {
         Ok(raw::Everything_GetResultPath(self.index).unwrap().into())
     }
 
-    /// Get the full path name, like x.path().join(x.filename()).
+    /// A convenient function to get the full path by Everything_GetResultFullPathName.
+    ///
+    /// Different from the [`full_path_name`], this is an unofficial function provided for
+    /// the special case. (We can use [`raw::Everything_GetResultFullPathName`] with the
+    /// two default flags EVERYTHING_REQUEST_PATH and EVERYTHING_REQUEST_FILE_NAME)
+    pub fn filepath(&self) -> Result<PathBuf> {
+        // A bit weird but this is a special case in the official documentation.
+        self.need_flags_set(
+            RequestFlags::EVERYTHING_REQUEST_PATH | RequestFlags::EVERYTHING_REQUEST_FILE_NAME,
+        )?;
+        let buf_len = u32::from(raw::Everything_GetResultFullPathNameSizeHint(self.index).unwrap());
+        let mut buf = vec![0; buf_len as usize];
+        let n_wchar =
+            u32::from(raw::Everything_GetResultFullPathName(self.index, &mut buf).unwrap());
+        assert_eq!(buf_len, n_wchar + 1);
+        Ok(U16CStr::from_slice(&buf).unwrap().to_os_string().into())
+    }
+
+    /// Get the full path name, can be with len limit if you need.
+    ///
+    /// Similar to x.path().join(x.filename()) if parent path is NOT drive root (like C:).
+    /// (Ref: <https://github.com/nodejs/node/issues/14405>)
     ///
     /// Buf if the pathname is too long, you can choose to cut off the tail, reduce the
     /// memory consumption, or limit the max size of buffer memory allocation.

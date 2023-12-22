@@ -10,9 +10,6 @@ fn main() {
         .set_max(5)
         .query()
     {
-        println!(
-            "{}",
-            x.path().unwrap().join(x.filename().unwrap()).display()
-        );
+        println!("{}", x.filepath().unwrap().display());
     }
 }
