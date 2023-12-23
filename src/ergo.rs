@@ -10,6 +10,7 @@ use crate::raw;
 pub use raw::FileInfoType;
 pub use raw::RequestFlags;
 pub use raw::SortType;
+pub use raw::TargetMachine;
 
 pub mod error {
     use super::RequestFlags;
@@ -113,7 +114,7 @@ impl EverythingGlobal {
 
     /// Everything uses the version format: `<major>.<minor>.<revision>.<build>`.
     /// The build part is incremental and unique for all Everything versions.
-    pub fn version(&self) -> Result<(u32, u32, u32, u32, raw::TargetMachine)> {
+    pub fn version(&self) -> Result<(u32, u32, u32, u32, TargetMachine)> {
         Ok((
             self.get_major_version()?,
             self.get_minor_version()?,
@@ -139,7 +140,7 @@ impl EverythingGlobal {
         raw::Everything_GetBuildNumber().ok_or(EverythingError::Ipc)
     }
 
-    pub fn get_target_machine(&self) -> Result<raw::TargetMachine> {
+    pub fn get_target_machine(&self) -> Result<TargetMachine> {
         raw::Everything_GetTargetMachine().ok_or(EverythingError::Ipc)
     }
 
