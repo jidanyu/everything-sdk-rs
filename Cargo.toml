@@ -1,6 +1,6 @@
 [package]
 name = "everything-sdk"
-version = "0.0.5"
+version = "0.0.6"
 edition = "2021"
 description = "An ergonomic Everything(voidtools) SDK wrapper in Rust. (Supports async and raw sdk functions)"
 readme = "README.md"

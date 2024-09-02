@@ -152,7 +152,7 @@ pub fn Everything_SetMatchWholeWord(enabled: bool) {
 /// - Regex is disabled by default.
 pub fn Everything_SetRegex(enabled: bool) {
     let enabled: BOOL = if enabled { TRUE } else { FALSE };
-    unsafe { sdk_sys::Everything_SetMatchWholeWord(enabled) }
+    unsafe { sdk_sys::Everything_SetRegex(enabled) }
 }
 
 /// The `Everything_SetMax` function set the maximum number of results to return
