@@ -56,7 +56,9 @@ pub use error::{EverythingError, InvalidRequestError, Result};
 use tracing::debug;
 use widestring::U16CStr;
 
-mod helper {
+pub  mod helper {
+    use windows::Win32::Foundation::FILETIME;
+
     use super::*;
 
     pub fn is_default_request_flags(request_flags: RequestFlags) -> bool {
@@ -71,6 +73,7 @@ mod helper {
     pub fn should_use_query_version_2(request_flags: RequestFlags, sort_type: SortType) -> bool {
         !is_default_request_flags(request_flags) || !is_default_sort_type(sort_type)
     }
+
 }
 
 #[cfg(not(feature = "async"))]

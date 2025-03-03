@@ -645,7 +645,8 @@ static DWORD EVERYTHINGAPI _Everything_query_thread_proc(void *param)
 {
 	HWND everything_hwnd;
 
-	everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+	// everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
+	everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 	if (everything_hwnd)
 	{
 		WNDCLASSEX wcex;
@@ -850,7 +851,7 @@ static BOOL _Everything_SendIPCQuery(void)
 	BOOL ret;
 	
 		// find the everything ipc window.
-	everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+	everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 	if (everything_hwnd)
 	{
 		_Everything_QueryVersion = 2;
@@ -2842,8 +2843,8 @@ LPCSTR EVERYTHINGAPI Everything_GetResultHighlightedFullPathAndFileNameA(DWORD d
 static BOOL _Everything_SendAPIBoolCommand(int command,LPARAM lParam)
 {
 	HWND everything_hwnd;
-	
-	everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+
+	everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 	if (everything_hwnd)
 	{
 		_Everything_LastError = 0;
@@ -2871,8 +2872,8 @@ static BOOL _Everything_SendAPIBoolCommand(int command,LPARAM lParam)
 static DWORD _Everything_SendAPIDwordCommand(int command,LPARAM lParam)
 {
 	HWND everything_hwnd;
-	
-	everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+
+	everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 	if (everything_hwnd)
 	{
 		_Everything_LastError = 0;
@@ -2967,8 +2968,8 @@ UINT EVERYTHINGAPI Everything_MSIExitAndStopService(void *msihandle)
 	// close Everything client
 	{
 		HWND everything_hwnd;
-		
-		everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+
+		everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 		if (everything_hwnd)
 		{
 			DWORD dwProcessId;
@@ -3158,8 +3159,8 @@ BOOL EVERYTHINGAPI Everything_IsFileInfoIndexed(DWORD fileInfoType)
 static LRESULT _Everything_SendCopyData(int command,const void *data,int size)
 {
 	HWND everything_hwnd;
-	
-	everything_hwnd = FindWindow(EVERYTHING_IPC_WNDCLASS,0);
+
+	everything_hwnd = FindWindow("EVERYTHING_TASKBAR_NOTIFICATION_(minum)", 0);
 	if (everything_hwnd)
 	{
 		COPYDATASTRUCT cds;
